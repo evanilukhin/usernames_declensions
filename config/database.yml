@@ -2,17 +2,18 @@ default: &default
   adapter: postgresql
   host: <%= ENV['DB_HOST'] %>
   port: <%= ENV['DB_PORT'] %>
-  username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
+  username: <%= ENV['DB_LOGIN'] %>
+  password: <%= ENV['DB_PASS'] %>
   pool: <%= ENV["DB_POOL"] || ENV['RAILS_MAX_THREADS'] || 5 %>
 
 development:
   <<: *default
-  database: <%= ENV['DATABASE'] || 'usernames_declensions' %>
+  database: <%= ENV['DB_NAME'] || 'usernames_declensions' %>
 
 test:
   <<: *default
-  database: <%= ENV['DATABASE'] || 'usernames_declensions_test' %>
+  database: <%= ENV['DB_NAME'] || 'usernames_declensions_test' %>
 
 production:
   <<: *default
+  database: <%= ENV['DB_NAME'] %>

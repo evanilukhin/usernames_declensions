@@ -1,0 +1,25 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - /tmp/usernames_declensions_db:/var/lib/postgresql/data
+  web:
+    image: evanilukhin/usernames_declensions:latest
+    entrypoint: bash bin/docker-entrypoint.sh
+    command: bin/rails server
+    environment:
+      # Variables to connect to our Postgres server
+      DB_LOGIN: postgres
+      DB_PASS: postgres
+      DB_NAME: usernames_declesions
+      DB_HOST: db
+      DB_PORT: 5432
+      RAILS_LOG_TO_STDOUT: 1
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db

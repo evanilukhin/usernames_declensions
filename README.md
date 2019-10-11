@@ -18,8 +18,8 @@ Install YARN from [there](https://yarnpkg.com/lang/en/docs/install)
 To prepare the database you must:
 * install postgres or get credentials for the existed database
 * add the next environment variables:
-   * DB_USERNAME - role in database that has rights to create database and to login;
-   * DB_PASSWORD - password;
+   * DB_LOGIN - role in database that has rights to create database and to login;
+   * DB_PASS - password;
    * DB_NAME -(optional in development and test environment) - name for the database. 
    By default in development - `usernames_declensions`, in test - `usernames_declensions_test`;
    * DB_HOST - host (localhost -  if this database deployed local)
