@@ -1,4 +1,4 @@
-# README
+# Username Declensions [![Reviewed by Hound][hound-badge-image]][hound]
 
 This application automatically generates all declensions for the first name, middle name and last_name registered in this application persons.
 
