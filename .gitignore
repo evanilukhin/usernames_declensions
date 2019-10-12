@@ -30,6 +30,7 @@
 .env.test
 .env.development
 
+/coverage
 /public/packs
 /public/packs-test
 /node_modules

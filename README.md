@@ -1,4 +1,4 @@
-# README
+# Username Declensions [![Reviewed by Hound][hound-badge-image]][hound]
 
 This application automatically generates all declensions for the first name, middle name and last_name registered in this application persons.
 
@@ -25,3 +25,6 @@ To prepare the database you must:
    * DB_HOST - host (localhost -  if this database deployed local)
    * DB_PORT - port
 * run `rake db:setup`
+
+[hound-badge-image]: https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg
+[hound]: https://houndci.com

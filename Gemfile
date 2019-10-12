@@ -29,9 +29,11 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'active_interaction', '~> 3.7'
+gem 'active_model_serializers', '~> 0.10.0'
 gem 'dotenv-rails', groups: %i[development test]
 gem 'petrovich', '~> 1.0'
 gem 'pg', '~> 1.1', '>= 1.1.4'
+gem 'rack-cors'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -39,7 +41,6 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'rspec-rails', '~> 3.9'
   gem 'rubocop', '~> 0.75.0'
-  gem 'rubocop-rails', '~> 2.3', '>= 2.3.2'
 end
 
 group :development do
