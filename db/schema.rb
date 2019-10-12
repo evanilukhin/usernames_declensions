@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_12_061044) do
+ActiveRecord::Schema.define(version: 2019_10_12_082454) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2019_10_12_061044) do
     t.string "full_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["person_id", "name_case"], name: "index_person_declensions_on_person_id_and_name_case", unique: true
     t.index ["person_id"], name: "index_person_declensions_on_person_id"
   end
 
