@@ -1,4 +1,4 @@
-# Username Declensions [![Reviewed by Hound][hound-badge-image]][hound]
+# Username Declensions [![Reviewed by Hound][hound-badge-image]][hound] [![CircleCI][circle-ci-image]][circle-ci]
 
 This application automatically generates all declensions for the first name, middle name and last_name registered in this application persons.
 
@@ -28,3 +28,5 @@ To prepare the database you must:
 
 [hound-badge-image]: https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg
 [hound]: https://houndci.com
+[circle-ci-image]: https://circleci.com/gh/evanilukhin/usernames_declensions/tree/master.svg?style=svg
+[circle-ci]: https://circleci.com/gh/evanilukhin/usernames_declensions/tree/master
