@@ -30,4 +30,14 @@ describe 'Person' do
       expect(person.declensions.pluck(:first_name)).to contain_exactly('Ивана', 'Ивану', 'Иваном', 'Иване', 'Ивана')
     end
   end
+
+  context 'destroy' do
+    let(:person) { create(:person) }
+
+    it 'removes declensions' do
+      declensions_ids = person.declensions.pluck(:id)
+      person.destroy
+      expect(PersonDeclension.where(id: declensions_ids).count).to eq(0)
+    end
+  end
 end
