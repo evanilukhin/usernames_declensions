@@ -25,3 +25,5 @@ To prepare the database you must:
    * DB_HOST - host (localhost -  if this database deployed local)
    * DB_PORT - port
 * run `rake db:setup`
+
+[hound]: https://houndci.com
