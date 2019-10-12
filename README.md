@@ -1,6 +1,6 @@
 # README
 
-This application automatically generates all declensions for the first name, middle name and surname registered in this application persons.
+This application automatically generates all declensions for the first name, middle name and last_name registered in this application persons.
 
 ## Architecture 
 This application consists  of two parts: 
