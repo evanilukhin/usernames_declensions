@@ -41,7 +41,6 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'rspec-rails', '~> 3.9'
   gem 'rubocop', '~> 0.75.0'
-  gem 'rubocop-rails', '~> 2.3', '>= 2.3.2'
 end
 
 group :development do
