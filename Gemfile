@@ -28,6 +28,7 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
+gem 'active_interaction', '~> 3.7'
 gem 'dotenv-rails', groups: %i[development test]
 gem 'petrovich', '~> 1.0'
 gem 'pg', '~> 1.1', '>= 1.1.4'
@@ -54,6 +55,7 @@ group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
+  gem 'simplecov'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
 end
