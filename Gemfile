@@ -29,6 +29,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'active_interaction', '~> 3.7'
+gem 'active_model_serializers', '~> 0.10.0'
 gem 'dotenv-rails', groups: %i[development test]
 gem 'petrovich', '~> 1.0'
 gem 'pg', '~> 1.1', '>= 1.1.4'
