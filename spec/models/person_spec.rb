@@ -6,7 +6,7 @@ describe 'Person' do
       expect(person.full_name).to eq('Ильясов Илья Михайлович')
     end
 
-    it 'creates 6 declensions' do
+    it 'creates 5 declensions' do
       expect(person.declensions.count).to eq(5)
     end
   end
@@ -18,7 +18,7 @@ describe 'Person' do
       person.update(first_name: 'Иван')
     end
 
-    it 'change full name' do
+    it 'changes full name' do
       expect(person.full_name).to eq('Ким Иван Анатольевич')
     end
 
@@ -26,7 +26,7 @@ describe 'Person' do
       expect(person.declensions.count).to eq(5)
     end
 
-    it 'change declensions' do
+    it 'changes declensions' do
       expect(person.declensions.pluck(:first_name)).to contain_exactly('Ивана', 'Ивану', 'Иваном', 'Иване', 'Ивана')
     end
   end
