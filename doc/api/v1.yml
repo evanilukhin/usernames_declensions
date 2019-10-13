@@ -1,8 +1,11 @@
 openapi: 3.0.0
 info:
   description: "This is the documentation for users_declensions API"
-  version: "0.1"
+  version: "0.2"
   title: "Users Declensions"
+servers:
+  - url: https://usernames-declensions.herokuapp.com/api/v1
+  - url: '/api/v1'
 tags:
   - name: "people"
     description: "Managing people"
