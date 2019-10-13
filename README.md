@@ -1,4 +1,4 @@
-# Username Declensions [![Reviewed by Hound][hound-badge-image]][hound] [![CircleCI][circle-ci-image]][circle-ci]
+# Username Declensions  [![CircleCI][circle-ci-image]][circle-ci] [![Reviewed by Hound][hound-badge-image]][hound]
 
 This application automatically generates all declensions for the first name, middle name and last_name registered in this application persons.
 
@@ -7,7 +7,7 @@ This application consists  of two parts:
 * Single Page Application on the React that worked as a view and partly as a router.
 * API manipulates data from the database
 
-##Setup
+## Setup
 ### JS
 Install YARN from [there](https://yarnpkg.com/lang/en/docs/install)
 ### Ruby 
