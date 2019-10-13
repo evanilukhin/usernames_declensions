@@ -90,7 +90,7 @@ class PersonEdit extends React.Component {
                             </form>
                         )}
                     />
-                    <Link to='/'> 🡐 назад </Link>
+                    <Link to='/'> 🡐 на главную </Link>
                 </div>
             )
         }

@@ -40,6 +40,7 @@ class Person extends React.Component {
                 <div>
                     <div> <b> Пользователь: </b> {person.full_name} </div>
                     <div> <b> Пол: </b> {person.sex_name} </div>
+                    <Link to={'/people/' + person.id + '/edit'}>Редактировать</Link>
                     <table>
                         <thead>
                             <tr>
@@ -62,7 +63,7 @@ class Person extends React.Component {
                         ))}
                         </tbody>
                     </table>
-                    <Link to='/'> 🡐 назад </Link>
+                    <Link to='/'> 🡐 на главную </Link>
                 </div>
             );
         }
