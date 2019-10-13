@@ -20,10 +20,8 @@ class Person extends React.Component {
                     isLoaded: true,
                     person: response.data
                 });
-                console.log(response);
             })
             .catch((error) => {
-                console.log(error);
                 this.setState({
                     isLoaded: true,
                     error
@@ -41,7 +39,7 @@ class Person extends React.Component {
             return (
                 <div>
                     <div> <b> Пользователь: </b> {person.full_name} </div>
-                    <div> <b> Пол: </b> {person.sex} </div>
+                    <div> <b> Пол: </b> {person.sex_name} </div>
                     <table>
                         <thead>
                             <tr>

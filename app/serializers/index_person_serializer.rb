@@ -1,5 +1,5 @@
 class IndexPersonSerializer < ActiveModel::Serializer
-  attributes :id, :first_name, :last_name, :middle_name, :full_name
+  attributes :id, :first_name, :last_name, :middle_name, :full_name, :sex
 
-  attribute(:sex) { I18n.t(object.sex || 'undefined', scope: 'sex', locale: :ru) }
+  attribute(:sex_name) { I18n.t(object.sex || 'undefined', scope: 'sex', locale: :ru) }
 end

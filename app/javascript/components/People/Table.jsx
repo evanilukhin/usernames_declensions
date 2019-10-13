@@ -32,10 +32,8 @@ class Table extends React.Component {
                     isLoaded: true,
                     items: response.data
                 });
-                console.log(response);
             })
             .catch((error) => {
-                console.log(error);
                 this.setState({
                     isLoaded: true,
                     error
@@ -69,7 +67,7 @@ class Table extends React.Component {
                             <td>{item.last_name}</td>
                             <td>{item.middle_name}</td>
                             <td>{item.full_name}</td>
-                            <td>{item.sex}</td>
+                            <td>{item.sex_name}</td>
                             <td>
                                 <Link to={'/people/' + item.id}>Показать</Link>
                                 <Link to={'/people/' + item.id + '/edit'}>Редактировать</Link>
