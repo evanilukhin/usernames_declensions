@@ -1,11 +1,25 @@
 import React from 'react'
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
 
-class App extends React.Component {
-    render() {
-        return(
-            <div> I am an application</div>
-        )
-    }
+import People from "./People";
+import Person from "./Person";
+import PersonEdit from "./PersonEdit";
+import PersonCreate from "./PersonCreate";
+
+export default function App() {
+    return (
+        <Router>
+            <Switch>
+                <Route path="/people/:id/edit" component={PersonEdit}/>
+                <Route path="/people/create" component={PersonCreate}/>
+                <Route path="/people/:id" component={Person}/>
+                <Route path="/" component={People}/>
+            </Switch>
+        </Router>
+    )
 }
-
-export default App
