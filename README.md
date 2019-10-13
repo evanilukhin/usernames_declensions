@@ -1,20 +1,24 @@
-# Username Declensions [![Reviewed by Hound][hound-badge-image]][hound] [![CircleCI][circle-ci-image]][circle-ci]
+# Username Declensions  [![CircleCI][circle-ci-image]][circle-ci] [![Reviewed by Hound][hound-badge-image]][hound]
 
-This application automatically generates all declensions for the first name, middle name and last_name registered in this application persons.
+Declines last name, first name, middle name for added users. Works only for russian names thanks [Petrovich](https://github.com/petrovich/petrovich-ruby).
 
-## Architecture 
-This application consists  of two parts: 
+This application consists of two parts: 
 * Single Page Application on the React that worked as a view and partly as a router.
-* API manipulates data from the database
+* API manipulates data from the database. (Documentation [there](doc/api/v1.yml))
 
-##Setup
-### JS
-Install YARN from [there](https://yarnpkg.com/lang/en/docs/install)
-### Ruby 
+Web site deployed on [heroku](https://usernames-declensions.herokuapp.com/).
+
+Latest builds on [dockerhub](https://hub.docker.com/r/evanilukhin/usernames_declensions).
+
+## Setup
+#### Ruby 
 * install ruby. Version [there](.ruby-version)
 * install bundler `gem install bundler`
 * run `bundle install`
-### Database
+#### JS
+* install YARN from [there](https://yarnpkg.com/lang/en/docs/install)
+* run `yarn install`
+#### Database
 To prepare the database you must:
 * install postgres or get credentials for the existed database
 * add the next environment variables:
@@ -25,7 +29,43 @@ To prepare the database you must:
    * DB_HOST - host (localhost -  if this database deployed local)
    * DB_PORT - port
 * run `rake db:setup`
+* run `rake db:migrate`
 
+After it, run `bin/rails s`.
+
+### ..or
+
+* install [docker](https://docs.docker.com/install/) and [docker-composer](https://docs.docker.com/compose/install/)
+* run `docker-compose up`
+
+In both cases server will be available on `localhost:3000`.
+
+## Features
+
+What there are and what there aren't:
+
+:heavy_check_mark: Almost 100% test coverage (only backend)
+
+:heavy_check_mark: Cool API
+
+:heavy_check_mark: Automatic tests by using Circle-CI
+
+:heavy_check_mark: Fantastic documentation for the API 
+
+:whale:  Docker. Autobuilds in docker-hub.
+
+
+:x: Handling errors on the front-end
+
+:x: Documentation for errors in the openapi specification
+
+:skull_and_crossbones: Fantastic(seriously) SPA. (I didn't add no one css file)
+
+:skull_and_crossbones: Unrivaled protection from attacks (Don't show this site to OWASP)
+
+:skull_and_crossbones: Absolutely readable React code (I spent only 4 hours on it and I don't know React)
+
+ 
 [hound-badge-image]: https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg
 [hound]: https://houndci.com
 [circle-ci-image]: https://circleci.com/gh/evanilukhin/usernames_declensions/tree/master.svg?style=svg
