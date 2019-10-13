@@ -49,7 +49,7 @@ class Person extends React.Component {
                                 <th> Фамилия</th>
                                 <th> Отчество</th>
                                 <th> ФИО</th>
-                                <th> Склонение</th>
+                                <th> Падеж </th>
                             </tr>
                         </thead>
                         <tbody>
