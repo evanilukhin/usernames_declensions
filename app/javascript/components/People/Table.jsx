@@ -22,7 +22,7 @@ class Table extends React.Component {
             .catch((error) => {
                 alert(error);
             });
-    }
+    };
 
 
     componentDidMount() {
