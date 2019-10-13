@@ -1,359 +1,195 @@
-swagger: "2.0"
+openapi: 3.0.0
 info:
   description: "This is the documentation for users_declensions API"
   version: "0.1"
   title: "Users Declensions"
-basePath: "/api/v1"
 tags:
   - name: "people"
     description: "Managing people"
-schemes:
-  - "https"
-  - "http"
 paths:
   /people:
+    get:
+      tags:
+        - "people"
+      responses:
+        200:
+          description: Returns people
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/person"
     post:
       tags:
         - "people"
       summary: "Add a new person"
-      description: ""
-      operationId: "addPerson"
-      consumes:
-        - "application/json"
-      produces:
-        - "application/json"
-      parameters:
-        - in: "body"
-          name: "body"
-          description: "Person object that needs to be added"
-          required: true
-          schema:
-            $ref: "#/definitions/person"
-      responses:
-        405:
-          description: "Invalid input"
-    put:
-      tags:
-        - "people"
-      summary: "Update an existing person"
-      description: ""
-      operationId: "updatePerson"
-      consumes:
-        - "application/json"        
-      produces:        
-        - "application/json"
-      parameters:
-        - in: "body"
-          name: "body"
-          description: "person object that needs to be added to the store"
-          required: true
-          schema:
-            $ref: "#/definitions/person"
-      responses:
-        400:
-          description: "Invalid ID supplied"
-        404:
-          description: "person not found"
-        405:
-          description: "Validation exception"
-      security:
-        - personstore_auth:
-            - "write:persons"
-            - "read:persons"
-  /person/findByStatus:
-    get:
-      tags:
-        - "person"
-      summary: "Finds persons by status"
-      description: "Multiple status values can be provided with comma separated strings"
-      operationId: "findpersonsByStatus"
-      produces:
-        
-        - "application/json"
-      parameters:
-        - name: "status"
-          in: "query"
-          description: "Status values that need to be considered for filter"
-          required: true
-          type: "array"
-          items:
-            type: "string"
-            enum:
-              - "available"
-              - "pending"
-              - "sold"
-            default: "available"
-          collectionFormat: "multi"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/person_form'
       responses:
         200:
-          description: "successful operation"
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/person"
+          description: "Returns created object"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/person'
         400:
-          description: "Invalid status value"
-      security:
-        - personstore_auth:
-            - "write:persons"
-            - "read:persons"
-  /person/{personId}:
+          description: "Contains json with errors messages"
+  /people/{personId}:
     get:
       tags:
-        - "person"
+        - "people"
       summary: "Find person by ID"
       description: "Returns a single person"
-      operationId: "getpersonById"
-      produces:
-        
-        - "application/json"
       parameters:
         - name: "personId"
           in: "path"
           description: "ID of person to return"
           required: true
-          type: "integer"
-          format: "int64"
+          schema:
+            type: integer
+            format: int64
       responses:
         200:
           description: "successful operation"
-          schema:
-            $ref: "#/definitions/person"
-        400:
-          description: "Invalid ID supplied"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/person'
         404:
           description: "person not found"
-      security:
-        - api_key: []
-    post:
+    patch:
       tags:
-        - "person"
-      summary: "Updates a person in the store with form data"
-      description: ""
-      operationId: "updatepersonWithForm"
-      consumes:
-        - "application/x-www-form-urlencoded"
-      produces:
-        
-        - "application/json"
+        - "people"
+      summary: "Updates a person in the with form data"
       parameters:
         - name: "personId"
           in: "path"
-          description: "ID of person that needs to be updated"
+          description: "ID of person to return"
           required: true
-          type: "integer"
-          format: "int64"
-        - name: "name"
-          in: "formData"
-          description: "Updated name of the person"
-          required: false
-          type: "string"
-        - name: "status"
-          in: "formData"
-          description: "Updated status of the person"
-          required: false
-          type: "string"
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/person_form'
       responses:
-        405:
-          description: "Invalid input"
-      security:
-        - personstore_auth:
-            - "write:persons"
-            - "read:persons"
+        200:
+          description: "Returns created object"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/person'
+        400:
+          description: "Bad request. Contains json with errors messages"
+        404:
+          description: "Person not found"
     delete:
       tags:
-        - "person"
+        - "people"
       summary: "Deletes a person"
-      description: ""
-      operationId: "deleteperson"
-      produces:
-        
-        - "application/json"
-      parameters:
-        - name: "api_key"
-          in: "header"
-          required: false
-          type: "string"
-        - name: "personId"
-          in: "path"
-          description: "person id to delete"
-          required: true
-          type: "integer"
-          format: "int64"
-      responses:
-        400:
-          description: "Invalid ID supplied"
-        404:
-          description: "person not found"
-      security:
-        - personstore_auth:
-            - "write:persons"
-            - "read:persons"
-  /person/{personId}/uploadImage:
-    post:
-      tags:
-        - "person"
-      summary: "uploads an image"
-      description: ""
-      operationId: "uploadFile"
-      consumes:
-        - "multipart/form-data"
-      produces:
-        - "application/json"
       parameters:
         - name: "personId"
           in: "path"
-          description: "ID of person to update"
+          description: "ID of person to return"
           required: true
-          type: "integer"
-          format: "int64"
-        - name: "additionalMetadata"
-          in: "formData"
-          description: "Additional data to pass to server"
-          required: false
-          type: "string"
-        - name: "file"
-          in: "formData"
-          description: "file to upload"
-          required: false
-          type: "file"
-      responses:
-        200:
-          description: "successful operation"
           schema:
-            $ref: "#/definitions/ApiResponse"
-      security:
-        - personstore_auth:
-            - "write:persons"
-            - "read:persons"
-securityDefinitions:
-  personstore_auth:
-    type: "oauth2"
-    authorizationUrl: "http://personstore.swagger.io/oauth/dialog"
-    flow: "implicit"
-    scopes:
-      write:persons: "modify persons in your account"
-      read:persons: "read your persons"
-  api_key:
-    type: "apiKey"
-    name: "api_key"
-    in: "header"
-definitions:
-  Order:
-    type: "object"
-    properties:
-      id:
-        type: "integer"
-        format: "int64"
-      personId:
-        type: "integer"
-        format: "int64"
-      quantity:
-        type: "integer"
-        format: "int32"
-      shipDate:
-        type: "string"
-        format: "date-time"
-      status:
-        type: "string"
-        description: "Order Status"
-        enum:
-          - "placed"
-          - "approved"
-          - "delivered"
-      complete:
-        type: "boolean"
-        default: false
-    xml:
-      name: "Order"
-  Category:
-    type: "object"
-    properties:
-      id:
-        type: "integer"
-        format: "int64"
-      name:
-        type: "string"
-    xml:
-      name: "Category"
-  User:
-    type: "object"
-    properties:
-      id:
-        type: "integer"
-        format: "int64"
-      username:
-        type: "string"
-      firstName:
-        type: "string"
-      lastName:
-        type: "string"
-      email:
-        type: "string"
-      password:
-        type: "string"
-      phone:
-        type: "string"
-      userStatus:
-        type: "integer"
-        format: "int32"
-        description: "User Status"
-    xml:
-      name: "User"
-  Tag:
-    type: "object"
-    properties:
-      id:
-        type: "integer"
-        format: "int64"
-      name:
-        type: "string"
-    xml:
-      name: "Tag"
-  person:
-    type: "object"
-    required:
-      - "name"
-      - "photoUrls"
-    properties:
-      id:
-        type: "integer"
-        format: "int64"
-      category:
-        $ref: "#/definitions/Category"
-      name:
-        type: "string"
-        example: "doggie"
-      photoUrls:
-        type: "array"
-        xml:
-          name: "photoUrl"
-          wrapped: true
-        items:
+            type: integer
+            format: int64
+      responses:
+        204:
+          description: "Success. Returns empty body"
+        400:
+          description: "Bad request. Contains json with errors messages"
+        404:
+          description: "Person not found"
+components:
+  schemas:
+    person_form:
+      type: "object"
+      required:
+        - "first_name"
+      properties:
+        first_name:
           type: "string"
-      tags:
-        type: "array"
-        xml:
-          name: "tag"
-          wrapped: true
-        items:
-          $ref: "#/definitions/Tag"
-      status:
-        type: "string"
-        description: "person status in the store"
-        enum:
-          - "available"
-          - "pending"
-          - "sold"
-    xml:
-      name: "person"
-  ApiResponse:
-    type: "object"
-    properties:
-      code:
-        type: "integer"
-        format: "int32"
-      type:
-        type: "string"
-      message:
-        type: "string"
+          example: "Сергей"
+        last_name:
+          type: "string"
+          example: "Иванов"
+        middle_name:
+          type: "string"
+          example: "Семёнович"
+        sex:
+          type: "string"
+          enum:
+            - "male"
+            - "female"
+    person:
+      type: "object"
+      required:
+        - "first_name"
+      properties:
+        id:
+          type: "integer"
+          format: "int64"
+        first_name:
+          type: "string"
+          example: "Сергей"
+        last_name:
+          type: "string"
+          example: "Иванов"
+        middle_name:
+          type: "string"
+          example: "Семёнович"
+        full_name:
+          type: "string"
+          description: "Concatenated last_name first_name and middle_name"
+          example: "Иванов Сергей Семёнович"
+        sex:
+          type: "string"
+          enum:
+            - "male"
+            - "female"
+        sex_name:
+          type: "string"
+          description: "Translated sex name"
+          example: "Мужской"
+        declensions:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/declension"
+    declension:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          format: "int64"
+        person_id:
+          type: "integer"
+          format: "int64"
+          description: "Person ID this object belongs to"
+        name_case:
+          type: "string"
+          description: "Translated case name"
+          example: "родительный"
+        first_name:
+          type: "string"
+          example: "Сергея"
+        last_name:
+          type: "string"
+          example: "Иванова"
+        middle_name:
+          type: "string"
+          example: "Семёновича"
+        full_name:
+          type: "string"
+          description: "Concatenated last_name first_name and middle_name"
+          example: "Иванова Сергея Семёновича"
+
