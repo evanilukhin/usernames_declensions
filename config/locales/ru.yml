@@ -1,0 +1,11 @@
+ru:
+  name_case:
+    genitive: родительный
+    dative: дательный
+    accusative: винительный
+    instrumental: творительный
+    prepositional: предложный
+  sex:
+    male: Мужской
+    female: Женский
+    undefined: Не задан

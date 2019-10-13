@@ -11,6 +11,7 @@ RUN apk add --no-cache --update build-base \
 
 ENV APP_PATH /usr/src/app
 ENV RAILS_ENV production
+ENV SECRET_KEY_BASE not_necessary
 
 # Different layer for gems installation
 WORKDIR $APP_PATH
