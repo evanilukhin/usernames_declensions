@@ -12,7 +12,7 @@ describe Api::V1::PeopleController do
     end
 
     it 'returns only two objects' do
-      expect(JSON.parse(response.body).count).to eq(2)
+      expect(JSON.parse(response.body).count).to eq(5)
     end
 
     it 'returns correct objects' do
