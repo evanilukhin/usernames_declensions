@@ -12,8 +12,7 @@ describe Api::V1::PeopleController do
     end
 
     it 'returns only two objects' do
-      expect(JSON.parse(response.body).count).to eq(5)
-    end
+      expect(JSON.parse(response.body).count).to eq(2)
 
     it 'returns correct objects' do
       first_json = IndexPersonSerializer.new(first_person).as_json.deep_stringify_keys
